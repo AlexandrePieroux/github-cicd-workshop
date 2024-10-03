@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - master
-  workflow_call:
-    inputs: 
-      environment:
-        description: "Name of the environment to deploy"
-        required: true
-        type: string
 
 jobs:
   build-and-push:
@@ -27,6 +21,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest      
     needs: [build-and-push]
+    strategy:
+      fail-fast: True
+      matrix: 
+        environment: ["dev", "int", "pro"] 
+    environment: ${{ matrix.environment }}
     steps:
       - name: Build or simulate building
         run: sleep 5
