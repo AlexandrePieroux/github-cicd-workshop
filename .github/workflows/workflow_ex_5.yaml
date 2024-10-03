@@ -8,7 +8,13 @@ jobs:
   hello-greet-js:
     runs-on: ubuntu-latest
     steps:
-      - name: greet
-        uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
+      - uses: actions/checkout@v4
+      - id: foo
+        uses: ./.github/actions/custom.yaml
         with:
           who-to-greet: 'Mona the Octocat'
+
+      - run: echo random-number "$RANDOM_NUMBER"
+        shell: bash
+        env:
+          RANDOM_NUMBER: ${{ steps.foo.outputs.random-number }}
