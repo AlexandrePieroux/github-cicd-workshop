@@ -8,9 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./exercise_3
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -24,5 +21,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
+          file: exercise_3/Dockerfile
+          context: ./exercise_3
           push: true
           tags: alexandrepieroux/workshop-flask:latest
