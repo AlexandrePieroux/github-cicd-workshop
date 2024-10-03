@@ -23,6 +23,7 @@ jobs:
     needs: [build-and-push]
     strategy:
       fail-fast: True
+      max-parallel: 1
       matrix: 
         environment: ["dev", "int", "pro"] 
     environment: ${{ matrix.environment }}

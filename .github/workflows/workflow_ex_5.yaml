@@ -1,0 +1,14 @@
+name: Protected envs and stages
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  hello-greet-js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: greet
+        uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
+        with:
+          who-to-greet: 'Mona the Octocat'
