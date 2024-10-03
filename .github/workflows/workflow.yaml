@@ -27,5 +27,5 @@ jobs:
         environment: ["dev", "int", "pro"] 
     environment: ${{ matrix.environment }}
     steps:
-      - name: Build or simulate building
+      - name: Foo
         run: sleep 5
