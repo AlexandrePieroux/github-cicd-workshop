@@ -1,8 +1,7 @@
 name: Protected envs and stages
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"
+  
 
 jobs:
   hello-greet-js:
